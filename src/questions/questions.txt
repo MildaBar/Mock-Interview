@@ -19,4 +19,4 @@ In movie database, you want to keep track of which streaming platforms offer eac
 4th LEVEL
 10.
 11.
-12.
+12. 9.js task asked you to find out which popular movie had higher rating. This time write a Node.js script that accepts two command-line arguments, which are the titles and years of two movies you want to compare for their ratings. In the script, use these command-line arguments to query a database to retrieve the ratings of the specified movies. Compare the ratings of the two movies. Check which of the two movies has a higher rating. Return the title and rating.
