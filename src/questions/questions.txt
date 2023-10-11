@@ -1,0 +1,22 @@
+QUESTIONS
+
+1st LEVEL
+1. List all movies that starts with "Star Wars". Return the title of the movie.
+2. List 3 best rated Star Wars movies in the descending order. Return the title of the movie.
+3. List all Harry Potter movies released from 2000 to 2010. Return the title and release date.
+
+2nd LEVEL
+4. Find the oldest movie title and release date.
+5. List all movies directed by George Lucas. You should return the title of the movie and release date. Order the results by the movie's release year in descending order.
+6. What is the average rating of movies released in 2010.
+
+3rd LEVEL
+7.
+8. Create new table.
+In movie database, you want to keep track of which streaming platforms offer each movie. A single movie may be available on multiple platforms. Create table named 'movie_platforms' to store this information. The table should include movie IDs, platform names.
+9. The most popular movie in 1996 was 'Independence Day' and the most popular movie in 1997 was 'Men in Black'.  Which movie has higher rating? Write a Node.js script. Return the title and rating.
+
+4th LEVEL
+10.
+11.
+12.

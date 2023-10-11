@@ -1,0 +1,1 @@
+SELECT title, MIN(year) FROM movies;
