@@ -1,28 +1,45 @@
 import sqlite from "better-sqlite3";
+
+// Star Wars: Episode IV - A New Hope|1977
+// Star Wars: Episode IX - The Rise of Skywalker|2019
+
 const dbPath = "movies.db";
 const db = sqlite(dbPath);
 
-const query96 =
-  "SELECT ratings.rating FROM ratings JOIN movies ON movies.id = ratings.movie_id WHERE movies.title = 'Independence Day' AND movies.year = 1996";
+const args = process.argv.slice(2);
+const movie1 = args[0];
+const year1 = args[1];
+const movie2 = args[2];
+const year2 = args[3];
 
-const query97 =
-  "SELECT ratings.rating FROM ratings JOIN movies ON movies.id = ratings.movie_id WHERE movies.title = 'Men in Black' AND movies.year = 1997";
-
-const statement96 = db.prepare(query96);
-const statement97 = db.prepare(query97);
-
-const rows96 = statement96.all();
-const rows97 = statement97.all();
-
-const rating96 = rows96[0].rating;
-const rating97 = rows97[0].rating;
-
-if (rating96 > rating97) {
+if (!movie1 || !year1 || !movie2 || !year2) {
   console.log(
-    `1996 year movie 'Independence Day has higher rating: ${rating96}`
+    "Please provide the titles and years of two movies you want to compare."
   );
+  process.exit(1);
+}
+
+const query =
+  "SELECT ratings.rating FROM ratings JOIN movies ON movies.id = ratings.movie_id WHERE movies.title = ? AND movies.year = ?";
+const statement = db.prepare(query);
+const result_movie1 = statement.all(movie1, year1);
+const result_movie2 = statement.all(movie2, year2);
+
+if (result_movie1.length === 0 || result_movie2.length === 0) {
+  console.log(`No such movie. Try again.`);
 } else {
-  console.log(`1997 year movie 'Men in Black' hasd higher rating: ${rating97}`);
+  const rating_movie1 = result_movie1[0].rating;
+  const rating_movie2 = result_movie2[0].rating;
+
+  if (rating_movie1 > rating_movie2) {
+    console.log(
+      `${year1} year movie '${movie1}' has a higher rating: ${rating_movie1}`
+    );
+  } else {
+    console.log(
+      `${year2} year movie '${movie2}' has a higher rating: ${rating_movie2}`
+    );
+  }
 }
 
 db.close();
