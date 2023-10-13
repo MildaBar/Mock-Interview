@@ -1,1 +1,5 @@
-SELECT title, year FROM movies JOIN directors ON directors.movie_id = movies.id JOIN people ON people.id = directors.person_id WHERE people.name = 'George Lucas' ORDER BY movies.year DESC;
+SELECT m.title, m.year FROM movies AS m
+JOIN directors AS d ON d.movie_id = m.id
+JOIN people AS p ON p.id = d.person_id
+WHERE p.name = 'George Lucas'
+ORDER BY m.year DESC;

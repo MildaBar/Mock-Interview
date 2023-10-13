@@ -43,7 +43,7 @@ try {
         throw new Error("Transaction failed.");
       }
     }
-  })();
+  });
 
   db.commit();
 

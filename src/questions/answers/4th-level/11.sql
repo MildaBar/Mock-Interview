@@ -1,5 +1,6 @@
-SELECT movies.title, COUNT(stars.person_id) AS actor_count FROM movies
-JOIN stars ON stars.movie_id = movies.id
-GROUP BY movies.title
-ORDER BY actor_count DESC
+SELECT m.title, COUNT(s.movie_id) AS star_count
+FROM movies AS m
+JOIN stars AS s ON m.id = s.movie_id
+GROUP BY m.title
+ORDER BY star_count DESC
 LIMIT 3;

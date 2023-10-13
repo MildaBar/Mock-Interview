@@ -7,15 +7,15 @@ const args = process.argv.slice(2);
 const movieTitle = args[0];
 const movieYear = args[1];
 
-// check if both movie and title are provided
+// check if both movie title and release year are provided
 if (!movieTitle || !movieYear) {
-  console.log("Please provide a movie title and release date");
+  console.log("Please provide a movie title and release year.");
   process.exit(1);
 }
 
-const transaction = db.transaction(() => {
+db.transaction(() => {
   try {
-    // check if movie and title already exists
+    // check if a movie with the same title and release year already exists
     const query = "SELECT title, year FROM movies WHERE title = ? AND year = ?";
     const statement = db.prepare(query);
     const rows = statement.all(movieTitle, movieYear);
@@ -24,10 +24,10 @@ const transaction = db.transaction(() => {
       console.log(
         "Movie with this title and release year already exists in the database."
       );
-      process.exit(1);
+      return;
     }
 
-    // instert data into movies table
+    // insert data into the movies table
     const insertMovieData = "INSERT INTO movies (title, year) VALUES (?, ?)";
     const prepareMoviesDataStatement = db.prepare(insertMovieData);
     const addMovieData = prepareMoviesDataStatement.run(movieTitle, movieYear);
@@ -41,15 +41,9 @@ const transaction = db.transaction(() => {
 
     console.log("Movie added to the database with ID:", movieId);
   } catch (error) {
-    console.log("Error:", error.message);
-    throw error;
+    console.log("Transaction failed:", error.message);
+    db.rollback();
   }
-});
 
-try {
-  transaction();
-  console.log("Transaction committed successfully.");
-} catch (error) {
-  console.log("Transaction failed:", error);
-  process.exit(1);
-}
+  db.commit();
+});

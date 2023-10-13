@@ -1,1 +1,3 @@
-SELECT COUNT(directors.movie_id) FROM directors JOIN people ON directors.person_id = people.id JOIN movies ON directors.movie_id = movies.id WHERE people.name = "Martin Scorsese";
+SELECT COUNT(movie_id)
+FROM directors AS d
+JOIN people AS p ON p.id = d.person_id WHERE p.name = 'Martin Scorsese';

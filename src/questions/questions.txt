@@ -1,22 +1,22 @@
 QUESTIONS
 
 1st LEVEL
-1. List all movies that starts with "Star Wars". Return the title of the movie.
+1. List all movies that starts with "Star Wars". Return the title of the movie, order results by release year.
 2. List 3 best rated Star Wars movies in the descending order. Return the title of the movie.
 3. List all Harry Potter movies released from 2000 to 2010. Return the title and release date.
 
 2nd LEVEL
 4. Find the oldest movie title and release date.
 5. List all movies directed by George Lucas. You should return the title of the movie and release date. Order the results by the movie's release year in descending order.
-6. What is the average rating of movies released in 2010.
+6. What is the average rating of movies released in 2010? Round the number to two decimal places.
 
 3rd LEVEL
 7. List all actors who were acting in 'Star Wars' and 'Indiana Jones' movies.
 8. Create new table.
-In movie database, you want to keep track of which streaming platforms offer each movie. A single movie may be available on multiple platforms. Create table named 'movie_platforms' to store this information. The table should include movie IDs, platform names.
+In movie database, you want to keep track of which streaming platforms offer each movie. Create table named 'movie_platforms'. This table should include movie IDs, platform names and foreign key referencing other relevant table within the database.
 9. Write a Node.js script that accepts two command-line arguments, which are the titles and years of two movies you want to compare for their ratings. In the script, use these command-line arguments to query a database to retrieve the ratings of the specified movies. Compare the ratings of the two movies. Check which of the two movies has a higher rating. Return the title and rating.
 
 4th LEVEL
-10. Name 'Harrison Ford's highest rating movie and lovest rating movie.
-11. List the top 3 movies with the most actors. Return movie and counted actors number. Order the results by the counted actors number in descending order.
+10. Name 'Harrison Ford's highest rating and lovest rated movies along with their ratings.
+11. List the top 3 movies with the most actors. Return movie title and counted actors number. Order the results by the counted actors number in descending order.
 12. Write a Node.js script that allows users to add new ratings for movies. The script should accept three command-line arguments, which are the title, release year and rating. Write necessary error messages. Return success message with movie title, release year, old rating and new rating.

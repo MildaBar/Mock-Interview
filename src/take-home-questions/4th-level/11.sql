@@ -1,5 +1,6 @@
-SELECT SUBSTR(movies.title, 1, 1) AS title_letter, AVG(ratings.rating) AS avg_rating
-FROM movies
-JOIN ratings ON movies.id = ratings.movies_id
-WHERE movies.title GLOB '[A-Z]*'
-GROUP BY title_letter ORDER BY title_letter ASC;
+SELECT SUBSTR(m.title, 1, 1) AS title_letter, ROUND(AVG(r.rating), 2) AS avg_rating
+FROM movies AS m
+JOIN ratings AS r ON m.id = r.movie_id
+WHERE m.title GLOB '[A-Z]*'
+GROUP BY title_letter
+ORDER BY title_letter ASC;
