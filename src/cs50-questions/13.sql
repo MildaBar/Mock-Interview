@@ -8,6 +8,3 @@ WHERE m1.id IN (
     WHERE p2.name = 'Kevin Bacon' AND p2.birth = 1958
 )
 AND p.name != 'Kevin Bacon';
-
-
-submit50 cs50/problems/2023/x/movies
