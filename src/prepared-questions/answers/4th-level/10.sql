@@ -9,3 +9,16 @@ JOIN ratings AS r2 ON r2.movie_id = m2.id
 JOIN stars AS s2 ON s2.movie_id = m2.id
 JOIN people AS p2 ON p2.id = s2.person_id
 WHERE p2.name = 'Harrison Ford';
+
+SELECT *
+FROM movies
+CROSS JOIN ratings
+WHERE movies.year = 1996 AND movies.id = ratings.movie_id;
+
+
+SELECT movies.title, people.name CROSS JOIN people WHERE people.birth = 1996 AND movies.year = 2022;
+
+SELECT movies.title, people.name 
+FROM movies 
+CROSS JOIN people 
+WHERE people.birth = 1996 AND movies.year = 2022;
