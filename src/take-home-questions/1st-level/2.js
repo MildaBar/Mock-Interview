@@ -16,7 +16,7 @@ rows.forEach((row) => {
   const peopleName = row.name;
   const passedYear = today - birthYear;
 
-  console.log(`name: ${peopleName}, years passed: ${passedYear} `);
+  process.stdout.write(`name: ${peopleName}, years passed: ${passedYear}\n`);
 });
 
 db.close();

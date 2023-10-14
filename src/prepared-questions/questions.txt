@@ -19,4 +19,4 @@ In movie database, you want to keep track of which streaming platforms offer eac
 4th LEVEL
 10. Name 'Harrison Ford's highest rating and lovest rated movies along with their ratings.
 11. List the top 3 movies with the most actors. Return movie title and counted actors number. Order the results by the counted actors number in descending order.
-12. Write a Node.js script that allows users to add new ratings for movies. The script should accept three command-line arguments, which are the title, release year and rating. Write necessary error messages. Return success message with movie title, release year, old rating and new rating.
+12. Write a Node.js script that allows users to add new data to the 'movie_platforms' table in the movie database. The script should accept two command-line arguments, the movie ID and the platform name. Write necessary error messages to guide the user in providing the correct inputs. If the data addition is successful, return a success message confirming the addition of the platform for the specified movie ID.

@@ -1,8 +1,5 @@
 import sqlite from "better-sqlite3";
 
-// Star Wars: Episode IV - A New Hope|1977
-// Star Wars: Episode IX - The Rise of Skywalker|2019
-
 const dbPath = "movies.db";
 const db = sqlite(dbPath);
 
@@ -13,7 +10,7 @@ const movie2 = args[2];
 const year2 = args[3];
 
 if (!movie1 || !year1 || !movie2 || !year2) {
-  console.log(
+  process.stdout.write(
     "Please provide the titles and years of two movies you want to compare."
   );
   process.exit(1);
@@ -22,22 +19,22 @@ if (!movie1 || !year1 || !movie2 || !year2) {
 const query =
   "SELECT ratings.rating FROM ratings JOIN movies ON movies.id = ratings.movie_id WHERE movies.title = ? AND movies.year = ?";
 const statement = db.prepare(query);
-const result_movie1 = statement.all(movie1, year1);
-const result_movie2 = statement.all(movie2, year2);
+const resultMovie1 = statement.all(movie1, year1);
+const resultMovie2 = statement.all(movie2, year2);
 
-if (result_movie1.length === 0 || result_movie2.length === 0) {
-  console.log(`No such movie. Try again.`);
+if (resultMovie1.length === 0 || resultMovie2.length === 0) {
+  process.stdout.write(`No such movie. Try again.`);
 } else {
-  const rating_movie1 = result_movie1[0].rating;
-  const rating_movie2 = result_movie2[0].rating;
+  const ratingMovie1 = resultMovie1[0].rating;
+  const ratingMovie2 = resultMovie2[0].rating;
 
-  if (rating_movie1 > rating_movie2) {
-    console.log(
-      `${year1} year movie '${movie1}' has a higher rating: ${rating_movie1}`
+  if (ratingMovie1 > ratingMovie2) {
+    process.stdout.write(
+      `${year1} year movie '${movie1}' has a higher rating: ${ratingMovie1}.`
     );
   } else {
-    console.log(
-      `${year2} year movie '${movie2}' has a higher rating: ${rating_movie2}`
+    process.stdout.write(
+      `${year2} year movie '${movie2}' has a higher rating: ${ratingMovie2}.`
     );
   }
 }
